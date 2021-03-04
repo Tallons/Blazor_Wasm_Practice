@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>492c745d-1fa5-43d6-90ef-6091c8a986ff</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.0" />
+    
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.3" />
+    
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Car_Dealership_Support.Client\Car_Dealership_Support.Client.csproj" />
+    <ProjectReference Include="..\Car_Dealership_Support.Shared\Car_Dealership_Support.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

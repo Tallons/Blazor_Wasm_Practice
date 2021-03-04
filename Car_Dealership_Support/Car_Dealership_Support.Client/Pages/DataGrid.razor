@@ -1,0 +1,42 @@
+@page "/datagrid"
+@inject HttpClient Http
+@using Car_Dealership_Support.Shared
+
+<h2>DevExpress Data Grid</h2>
+
+<p class="pb-2 pt-2">
+    The DevExpress Data Grid for Blazor allows you to display and manage data via a tabular (rows/columns) UI metaphor.
+    This page uses our Blazor Data Grid component to display weather forecast values.
+</p>
+
+@if(orders == null) {
+    <p><em>Loading...</em></p>
+} else {
+    <DxDataGrid Data="@orders">
+        <Columns>
+            <DxDataGridDateEditColumn Caption="Date" Field="Date" />
+            <DxDataGridColumn Caption="FirstName" Field="FirstName" />
+            <DxDataGridColumn Caption="LastName" Field="LastName" />
+            <DxDataGridColumn Caption="Email" Field="Email" />
+            <DxDataGridColumn Caption="ShippingAddress" Field="ShippingAddress" />
+            <DxDataGridColumn Caption="BillingAddress" Field="BillingAddress" />
+            <DxDataGridColumn Caption="CarOrders" Field="CarOrders">
+                <DisplayTemplate>
+                    @{
+                        var order = (context as Order);
+                        <tr></tr>
+                    }
+                </DisplayTemplate>
+            </DxDataGridColumn>
+        </Columns>
+    </DxDataGrid>
+
+}
+
+@code {
+    private IEnumerable<Order> orders;
+
+    protected override async Task OnInitializedAsync() {
+        orders = await Http.GetFromJsonAsync<IEnumerable<Order>>("/api/cardb/orders");
+    }
+}
